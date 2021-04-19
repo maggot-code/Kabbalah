@@ -18,5 +18,10 @@
     "bugs": {
         "url": "https://github.com/maggot-code/Kabbalah/issues"
     },
-    "homepage": "https://github.com/maggot-code/Kabbalah#readme"
+    "homepage": "https://github.com/maggot-code/Kabbalah#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "lodash": "^4.17.21",
+        "vue": "^3.0.11"
+    }
 }
