@@ -18,6 +18,7 @@ pnpm-debug.log*
 .git
 .idea
 .vscode
+.npmignore
 *.suo
 *.ntvs*
 *.njsproj

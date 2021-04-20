@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "ESNext",
+        "module": "commonjs",
         "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
@@ -8,14 +8,13 @@
         "esModuleInterop": true,
         "jsx": "preserve",
         "noLib": false,
-        "target": "es6",
+        "target": "ES6",
         "sourceMap": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "outDir": "./lib"
     },
     "exclude": [
-        "node_modules"
-    ],
-    "include": [
-        "**/*"
+        "node_modules",
+        "lib"
     ]
 }
