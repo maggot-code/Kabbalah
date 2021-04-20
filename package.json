@@ -3,10 +3,6 @@
     "version": "1.0.1",
     "description": "kabbalah",
     "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/maggot-code/Kabbalah.git"
@@ -20,9 +16,24 @@
         "url": "https://github.com/maggot-code/Kabbalah/issues"
     },
     "homepage": "https://github.com/maggot-code/Kabbalah#readme",
-    "dependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "babel": "babel lib -d lib -s"
+    },
     "devDependencies": {
-        "lodash": "^4.17.21",
+        "@babel/cli": "^7.13.16",
+        "@babel/core": "^7.13.16",
+        "@babel/plugin-proposal-class-properties": "^7.13.0",
+        "@babel/preset-env": "^7.13.15",
+        "@babel/preset-typescript": "^7.13.0",
+        "@vue/babel-plugin-jsx": "^1.0.5",
+        "babel-preset-vue": "^2.0.2",
+        "eslint": "^7.24.0",
+        "eslint-plugin-vue": "^7.9.0",
+        "typescript": "^4.2.4",
         "vue": "^3.0.11"
+    },
+    "dependencies": {
+        "lodash": "^4.17.21"
     }
 }
