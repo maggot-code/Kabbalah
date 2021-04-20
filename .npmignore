@@ -1,7 +1,0 @@
-node_modules
-packages
-package-lock.json
-.vscode
-.editorconfig
-.gitignore
-.git
