@@ -5,7 +5,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "babel": "babel lib -d lib -s",
-        "build": "webpack --config ./webpack.config.js"
+        "build": "webpack --config ./webpack.config.js",
+        "serve": "webpack-dev-server --config ./webpack.config.js"
     },
     "main": "lib/index.js",
     "description": "kabbalah",
