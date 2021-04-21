@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
         "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
@@ -8,13 +10,19 @@
         "esModuleInterop": true,
         "jsx": "preserve",
         "noLib": false,
-        "target": "ES6",
         "sourceMap": true,
         "allowSyntheticDefaultImports": true,
         "outDir": "./lib"
     },
+    "include": [
+        "packages/**/*.ts",
+        "packages/**/*.tsx",
+        "packages/**/*.vue",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+    ],
     "exclude": [
-        "node_modules",
-        "lib"
+        "node_modules"
     ]
 }

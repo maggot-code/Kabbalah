@@ -1,0 +1,33 @@
+<!--
+ * @Author: maggot-code
+ * @Date: 2021-04-21 11:31:25
+ * @LastEditors: maggot-code
+ * @LastEditTime: 2021-04-21 14:12:17
+ * @Description: file content
+-->
+<template>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
+</template>
+
+<script lang="ts">
+import HelloWorld from "./components/HelloWorld.vue";
+
+export default {
+    name: "App",
+    components: {
+        HelloWorld,
+    },
+};
+</script>
+
+<style>
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+</style>

@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-04-20 23:01:23
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-21 10:12:21
+ * @LastEditTime: 2021-04-21 13:47:04
  * @Description: file content
  */
 module.exports = {
@@ -11,10 +11,10 @@ module.exports = {
         "node": true
     },
     "extends": [
+        "plugin:vue/vue3-essential",
         "eslint:recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": 6,
         "parser": "@babel/eslint-parser"
     },
     rules: {
