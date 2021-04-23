@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-04-20 23:01:23
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-21 10:12:21
+ * @LastEditTime: 2021-04-23 15:19:58
  * @Description: file content
  */
 module.exports = {
@@ -15,7 +15,8 @@ module.exports = {
     ],
     "parserOptions": {
         "ecmaVersion": 6,
-        "parser": "@babel/eslint-parser"
+        "parser": "@babel/eslint-parser",
+        "sourceType": "module"
     },
     rules: {
         'indent': ['error', 4],
