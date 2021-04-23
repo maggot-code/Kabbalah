@@ -2,12 +2,12 @@
  * @Author: maggot-code
  * @Date: 2021-04-22 09:42:09
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-23 13:50:13
+ * @LastEditTime: 2021-04-23 14:10:54
  * @Description: file content
  */
 import { App } from 'vue';
 import type { SFCWithInstall } from '../utils/types';
-import KCount from './domain/index.vue';
+import KCount from './domain/count.vue';
 
 KCount.install = (app: App): void => {
     const { name } = KCount;
