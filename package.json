@@ -1,6 +1,6 @@
 {
     "name": "kabbalah",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "private": false,
     "scripts": {
         "build": "npm run clear:lib && rollup -c ./rollup.config.js",
