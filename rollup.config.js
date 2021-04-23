@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-04-23 13:31:26
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-23 15:49:17
+ * @LastEditTime: 2021-04-23 16:29:10
  * @Description: file content
  */
 import vue from 'rollup-plugin-vue';
@@ -40,8 +40,8 @@ export default [
         external,
         input,
         output: {
-            file: "lib/index.umd.js",
-            format: "umd",
+            file: "lib/index.esm.js",
+            format: "es",
             name: "Kabbalah",
             exports: "named",
             sourcemap: true,
@@ -55,10 +55,11 @@ export default [
         external,
         input,
         output: {
-            file: "lib/index.esm.js",
-            format: "es",
+            file: "lib/index.umd.js",
+            format: "umd",
+            name: "Kabbalah",
             exports: "named",
-            sourcemap: false,
+            sourcemap: true,
             globals: {
                 "vue": "vue"
             }
