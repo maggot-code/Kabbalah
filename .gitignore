@@ -4,7 +4,6 @@ dist
 package-lock.json
 lib
 
-
 # local env files
 *.local
 .env.*
