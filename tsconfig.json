@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "target": "ESNEXT",
+        "module": "ESNEXT",
+        "strict": true,
         "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
@@ -8,13 +10,22 @@
         "esModuleInterop": true,
         "jsx": "preserve",
         "noLib": false,
-        "target": "ES6",
         "sourceMap": true,
+        "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
-        "outDir": "./lib"
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./lib",
+        "lib": [
+            "es6",
+            "dom"
+        ]
     },
     "exclude": [
         "node_modules",
         "lib"
+    ],
+    "include": [
+        "packages",
+        "typings/vue-shim.d.ts"
     ]
 }
