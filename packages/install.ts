@@ -2,17 +2,14 @@
  * @Author: maggot-code
  * @Date: 2021-04-22 09:36:51
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-23 15:31:01
+ * @LastEditTime: 2021-04-25 11:15:04
  * @Description: file content
  */
 // import 'normalize.css';
 import type { App } from 'vue';
+import KPopup from './popup';
 
-import KCount from './k-count';
-
-const components = [
-    KCount
-]
+const components = [KPopup]
 
 const install = (app: App): void => {
     components.forEach(component => {
@@ -22,8 +19,8 @@ const install = (app: App): void => {
 }
 
 export {
-    KCount,
-    install
+    install,
+    KPopup,
 }
 
 export default {

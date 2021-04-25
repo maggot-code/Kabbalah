@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "ESNEXT",
-        "module": "ESNEXT",
+        "target": "esnext",
+        "module": "esnext",
         "strict": true,
         "declaration": true,
         "noImplicitAny": false,
@@ -16,8 +16,13 @@
         "forceConsistentCasingInFileNames": true,
         "outDir": "./lib",
         "lib": [
-            "es6",
+            "esnext",
             "dom"
+        ],
+        "plugins": [
+            {
+                "name": "@vuedx/typescript-plugin-vue"
+            }
         ]
     },
     "exclude": [
@@ -25,7 +30,14 @@
         "lib"
     ],
     "include": [
-        "packages",
-        "typings/vue-shim.d.ts"
+        "typings/vue-shim.d.ts",
+        "packages/**/*.ts",
+        "packages/**/*.d.ts",
+        "packages/**/*.tsx",
+        "packages/**/*.vue",
+        "debug/**/*.ts",
+        "debug/**/*.d.ts",
+        "debug/**/*.tsx",
+        "debug/**/*.vue",
     ]
 }
