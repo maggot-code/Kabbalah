@@ -2,11 +2,13 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 09:47:21
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-25 11:26:14
+ * @LastEditTime: 2021-04-25 11:33:14
  * @Description: file content
 -->
 <template>
-    <k-popup></k-popup>
+    <div class="debug-test-box">
+        <k-popup></k-popup>
+    </div>
 </template>
 
 <script lang="ts">
