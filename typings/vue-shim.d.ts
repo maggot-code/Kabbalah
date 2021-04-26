@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-04-22 16:22:43
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 10:27:59
+ * @LastEditTime: 2021-04-26 17:04:36
  * @Description: file content
  */
 // declare module '*.vue' {
@@ -28,6 +28,15 @@ declare namespace NodeJS {
          * 
          */
         readonly NODE_ENV: 'development' | 'production'
+    }
+}
+
+declare namespace KType {
+    interface fn {
+        (...args: any[]): any
+    }
+    interface AnyObject {
+        [key: string]: any
     }
 }
 

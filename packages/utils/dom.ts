@@ -2,12 +2,17 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 13:21:13
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 13:21:37
+ * @LastEditTime: 2021-04-26 17:17:06
  * @Description: file content
  */
 import { isObject } from 'lodash';
 import isServer from './isServer';
 import { camelize, trim } from './tool';
+
+declare namespace KDom {
+    type element = HTMLElement | Document | Window
+    type handler = EventListenerOrEventListenerObject
+}
 
 function eachClasses(classes: string[], callback: KType.fn): void {
     for (let i = 0, j = classes.length; i < j; i++) {
@@ -18,29 +23,19 @@ function eachClasses(classes: string[], callback: KType.fn): void {
     }
 }
 
-function getOffsetTop(el: KDom.el): number {
-    let offset = 0
-    let parent = el
-
-    while (parent) {
-        offset += parent.offsetTop
-        parent = parent.offsetParent as KDom.el
-    }
-
-    return offset
+function stop(e: Event): void {
+    e.stopPropagation()
 }
 
-const stop = (e: Event) => e.stopPropagation()
-
-const on: KDom.eventener = function (element, event, handler, useCapture = false) {
+function on(element: KDom.element, event: string, handler: KDom.handler, useCapture: boolean = false): void {
     element.addEventListener(event, handler, useCapture);
 }
 
-const off: KDom.eventener = function (element, event, handler, useCapture = false) {
+function off(element: KDom.element, event: string, handler: KDom.handler, useCapture: boolean = false): void {
     element.removeEventListener(event, handler, useCapture);
 }
 
-const hasClass: KDom.className = function (el, cls) {
+function hasClass(el: HTMLElement, cls: string): boolean {
     if (!el || !cls) return false;
     if (cls.indexOf(' ') !== -1) throw new Error('class name not contains space.');
 
@@ -51,7 +46,7 @@ const hasClass: KDom.className = function (el, cls) {
     return classList ? containsCls : firstCls;
 }
 
-const addClass: KDom.className = function (el, cls) {
+function addClass(el: HTMLElement, cls: string): void {
     if (!el) return
     const classes = (cls || '').split(' ');
     let curClass = el.className;
@@ -69,7 +64,7 @@ const addClass: KDom.className = function (el, cls) {
     }
 }
 
-const removeClass: KDom.className = function (el, cls) {
+function removeClass(el: HTMLElement, cls: string): void {
     if (!el || !cls) return
     const classes = cls.split(' ');
     let curClass = ` ${el.className} `;
@@ -87,7 +82,7 @@ const removeClass: KDom.className = function (el, cls) {
     }
 }
 
-const getStyle: KDom.style = function (el, styleName) {
+function getStyle(el: HTMLElement, styleName: string): string {
     if (isServer) return ""
 
     styleName = camelize(styleName)
@@ -109,7 +104,7 @@ const getStyle: KDom.style = function (el, styleName) {
     }
 }
 
-const setStyle = function (el: KDom.el, styleName: string, value?: string) {
+function setStyle(el: HTMLElement, styleName: string, value?: string) {
     if (isObject(styleName)) {
         Object.keys(styleName).forEach(prop => {
             setStyle(el, prop, styleName[prop])
@@ -120,7 +115,7 @@ const setStyle = function (el: KDom.el, styleName: string, value?: string) {
     }
 }
 
-const removeStyle: KDom.style = function (el, style) {
+function removeStyle(el: HTMLElement, style: string): void {
     if (isObject(style)) {
         Object.keys(style).forEach(prop => {
             setStyle(el, prop, '')
@@ -130,7 +125,19 @@ const removeStyle: KDom.style = function (el, style) {
     }
 }
 
-const getOffsetTopDistance: KDom.offsetDistance = function (el, boxEl) {
+function getOffsetTop(el: HTMLElement): number {
+    let offset = 0
+    let parent = el
+
+    while (parent) {
+        offset += parent.offsetTop
+        parent = parent.offsetParent as HTMLElement
+    }
+
+    return offset
+}
+
+function getOffsetTopDistance(el: HTMLElement, boxEl: HTMLElement): number {
     return Math.abs(getOffsetTop(el) - getOffsetTop(boxEl))
 }
 

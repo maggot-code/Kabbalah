@@ -2,13 +2,13 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 22:03:05
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 13:31:30
+ * @LastEditTime: 2021-04-26 17:28:47
  * @Description: file content
  */
 import { camelize } from '@vue/shared'
 import isServer from './isServer';
 
-const trim = function (s: string): string {
+function trim(s: string): string {
     return (s || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
 }
 
