@@ -2,12 +2,11 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 13:21:13
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 17:17:06
+ * @LastEditTime: 2021-04-26 17:44:07
  * @Description: file content
  */
-import { isObject } from 'lodash';
 import isServer from './isServer';
-import { camelize, trim } from './tool';
+import { camelize, trim, isObject } from './tool';
 
 declare namespace KDom {
     type element = HTMLElement | Document | Window
@@ -95,7 +94,7 @@ function getStyle(el: HTMLElement, styleName: string): string {
         if (style) return style
         if (!document) return "";
 
-        const computed = document.defaultView?.getComputedStyle(el, "")
+        const computed = document.defaultView!.getComputedStyle(el, "")
 
         return computed ? computed[styleName] : ''
     } catch (e) {

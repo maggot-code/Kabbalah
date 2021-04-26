@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-04-23 16:51:47
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 17:28:16
+ * @LastEditTime: 2021-04-26 17:36:31
  * @Description: file content
 -->
 <template>
@@ -43,10 +43,7 @@ export default defineComponent({
     emits: [OPEN_EVENT, OPENED_EVENT, CLOSE_EVENT, CLOSED_EVENT],
     setup(props, ctx: SetupContext) {
         const popupRef = ref(null)
-        return {
-            ...usePopup(props, ctx, popupRef),
-            popupRef,
-        }
+        return Object.assign({}, usePopup(props, ctx, popupRef), popupRef)
     },
 })
 </script>

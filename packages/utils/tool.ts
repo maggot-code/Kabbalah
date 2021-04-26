@@ -2,15 +2,19 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 22:03:05
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 17:28:47
+ * @LastEditTime: 2021-04-26 17:43:34
  * @Description: file content
  */
 import { camelize } from '@vue/shared'
 import isServer from './isServer';
 
-function trim(s: string): string {
-    return (s || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
-}
+const trim = (s: string) => (s || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
+
+const isArray = Array.isArray;
+
+const isString = (val: any): boolean => typeof val === 'string'
+
+const isObject = (obj: any): boolean => obj !== null && typeof obj === 'object'
 
 function isIE(): boolean {
     return !isServer && navigator.userAgent.toLowerCase().indexOf('trident') > -1;
@@ -31,6 +35,9 @@ function getRandomInt(max: number): number {
 export {
     camelize,
     trim,
+    isArray,
+    isString,
+    isObject,
     isIE,
     isEdge,
     isFirefox,

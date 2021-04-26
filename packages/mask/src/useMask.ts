@@ -2,13 +2,12 @@
  * @Author: maggot-code
  * @Date: 2021-04-26 15:43:57
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 17:20:49
+ * @LastEditTime: 2021-04-26 17:39:25
  * @Description: file content
  */
 import { computed, ref, watch, nextTick, onMounted } from 'vue';
 import isServer from '../../utils/isServer';
-import { isString } from 'lodash';
-
+import { isString } from '../../utils/tool';
 import type { Ref } from 'vue';
 import type { SetupContext } from '@vue/runtime-core';
 
