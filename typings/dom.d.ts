@@ -2,17 +2,23 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 15:22:13
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-25 22:31:39
+ * @LastEditTime: 2021-04-26 13:15:40
  * @Description: file content
  */
 declare namespace KDom {
-    type KEl = HTMLElement
-    type KElement = HTMLElement | Document | Window
-    type KHandler = EventListenerOrEventListenerObject
-    interface KEventener {
-        (element: KElement, event: string, handler: KHandler, useCapture?: boolean): void
+    type el = HTMLElement
+    type element = HTMLElement | Document | Window
+    type handler = EventListenerOrEventListenerObject
+    interface eventener {
+        (element: element, event: string, handler: handler, useCapture?: boolean): void
     }
-    interface KClassName {
-        (el: KEl, cls: string): any
+    interface className {
+        (el: el, cls: string): boolean | void
+    }
+    interface style {
+        (el: el, styleName: string): string | void
+    }
+    interface offsetDistance {
+        (el: el, boxEl: el): number
     }
 }

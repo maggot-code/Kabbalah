@@ -2,23 +2,45 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 13:21:13
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-25 22:31:57
+ * @LastEditTime: 2021-04-26 13:21:37
  * @Description: file content
  */
-import { trim } from './tool';
+import { isObject } from 'lodash';
+import isServer from './isServer';
+import { camelize, trim } from './tool';
 
-// 绑定元素事件
-const on: KDom.KEventener = function (element, event, handler, useCapture = false) {
+function eachClasses(classes: string[], callback: KType.fn): void {
+    for (let i = 0, j = classes.length; i < j; i++) {
+        const clsName = classes[i]
+        if (!clsName) continue
+
+        callback(clsName)
+    }
+}
+
+function getOffsetTop(el: KDom.el): number {
+    let offset = 0
+    let parent = el
+
+    while (parent) {
+        offset += parent.offsetTop
+        parent = parent.offsetParent as KDom.el
+    }
+
+    return offset
+}
+
+const stop = (e: Event) => e.stopPropagation()
+
+const on: KDom.eventener = function (element, event, handler, useCapture = false) {
     element.addEventListener(event, handler, useCapture);
 }
 
-// 解除元素事件
-const off: KDom.KEventener = function (element, event, handler, useCapture = false) {
+const off: KDom.eventener = function (element, event, handler, useCapture = false) {
     element.removeEventListener(event, handler, useCapture);
 }
 
-// 是否存在 class name
-const hasClass: KDom.KClassName = function (el, cls): boolean {
+const hasClass: KDom.className = function (el, cls) {
     if (!el || !cls) return false;
     if (cls.indexOf(' ') !== -1) throw new Error('class name not contains space.');
 
@@ -29,56 +51,101 @@ const hasClass: KDom.KClassName = function (el, cls): boolean {
     return classList ? containsCls : firstCls;
 }
 
-// 添加 class name
-const addClass: KDom.KClassName = function (el, cls): void {
+const addClass: KDom.className = function (el, cls) {
     if (!el) return
-    let curClass = el.className;
     const classes = (cls || '').split(' ');
+    let curClass = el.className;
 
-    for (let i = 0, j = classes.length; i < j; i++) {
-        const clsName = classes[i]
-        if (!clsName) continue
-
+    eachClasses(classes, (clsName) => {
         if (el.classList) {
             el.classList.add(clsName)
         } else if (!hasClass(el, clsName)) {
             curClass += ` ${clsName}`
         }
-    }
+    })
 
     if (!el.classList) {
         el.className = curClass
     }
 }
 
-// 移除 class name
-const removeClass: KDom.KClassName = function (el, cls): void {
+const removeClass: KDom.className = function (el, cls) {
     if (!el || !cls) return
     const classes = cls.split(' ');
     let curClass = ` ${el.className} `;
 
-    for (let i = 0, j = classes.length; i < j; i++) {
-        const clsName = classes[i]
-        if (!clsName) continue
-
+    eachClasses(classes, (clsName) => {
         if (el.classList) {
             el.classList.remove(clsName)
         } else if (hasClass(el, clsName)) {
             curClass = curClass.replace(` ${clsName} `, ' ')
         }
-    }
+    })
 
     if (!el.classList) {
         el.className = trim(curClass)
     }
 }
 
+const getStyle: KDom.style = function (el, styleName) {
+    if (isServer) return ""
+
+    styleName = camelize(styleName)
+    if (styleName === 'float') {
+        styleName = 'cssFloat'
+    }
+
+    try {
+        const style = el.style[styleName]
+        if (style) return style
+        if (!document) return "";
+
+        const computed = document.defaultView?.getComputedStyle(el, "")
+
+        return computed ? computed[styleName] : ''
+    } catch (e) {
+        console.log(e);
+        return el.style[styleName]
+    }
+}
+
+const setStyle = function (el: KDom.el, styleName: string, value?: string) {
+    if (isObject(styleName)) {
+        Object.keys(styleName).forEach(prop => {
+            setStyle(el, prop, styleName[prop])
+        });
+    } else {
+        styleName = camelize(styleName)
+        el.style[styleName] = value
+    }
+}
+
+const removeStyle: KDom.style = function (el, style) {
+    if (isObject(style)) {
+        Object.keys(style).forEach(prop => {
+            setStyle(el, prop, '')
+        });
+    } else {
+        setStyle(el, style, '')
+    }
+}
+
+const getOffsetTopDistance: KDom.offsetDistance = function (el, boxEl) {
+    return Math.abs(getOffsetTop(el) - getOffsetTop(boxEl))
+}
+
 export {
+    stop,
     on,
     off,
     hasClass,
     addClass,
-    removeClass
+    removeClass,
+    getStyle,
+    setStyle,
+    removeStyle,
+    getOffsetTop,
+    getOffsetTopDistance
 }
 
 export default {}
