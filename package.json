@@ -7,7 +7,7 @@
         "build:debug": "npm run typecheck && vite build",
         "build": "npm run clear:lib && rollup -c ./rollup.config.js",
         "clear:lib": "rimraf lib",
-        "typecheck": "vuedx-typecheck ./packages & vuedx-typecheck ./debug & vuedx-typecheck ./typings"
+        "typecheck": "vuedx-typecheck packages & vuedx-typecheck ./debug & vuedx-typecheck ./typings"
     },
     "files": [
         "lib",

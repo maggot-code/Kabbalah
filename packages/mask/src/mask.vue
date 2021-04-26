@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-04-26 15:22:17
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 17:35:10
+ * @LastEditTime: 2021-04-26 18:06:04
  * @Description: file content
 -->
 <template>
@@ -33,7 +33,9 @@ export default defineComponent({
         },
     },
     setup(props: any, ctx: SetupContext) {
-        return Object.assign({}, {}, useMask(props, ctx))
+        return {
+            ...useMask(props, ctx),
+        }
     },
     beforeCreate() {},
     created() {
