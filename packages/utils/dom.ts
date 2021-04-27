@@ -2,16 +2,14 @@
  * @Author: maggot-code
  * @Date: 2021-04-25 13:21:13
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-04-26 17:44:07
+ * @LastEditTime: 2021-04-27 09:30:47
  * @Description: file content
  */
 import isServer from './isServer';
 import { camelize, trim, isObject } from './tool';
 
-declare namespace KDom {
-    type element = HTMLElement | Document | Window
-    type handler = EventListenerOrEventListenerObject
-}
+type KElement = HTMLElement | Document | Window
+type KHandler = EventListenerOrEventListenerObject
 
 function eachClasses(classes: string[], callback: KType.fn): void {
     for (let i = 0, j = classes.length; i < j; i++) {
@@ -26,11 +24,11 @@ function stop(e: Event): void {
     e.stopPropagation()
 }
 
-function on(element: KDom.element, event: string, handler: KDom.handler, useCapture: boolean = false): void {
+function on(element: KElement, event: string, handler: KHandler, useCapture: boolean = false): void {
     element.addEventListener(event, handler, useCapture);
 }
 
-function off(element: KDom.element, event: string, handler: KDom.handler, useCapture: boolean = false): void {
+function off(element: KElement, event: string, handler: KHandler, useCapture: boolean = false): void {
     element.removeEventListener(event, handler, useCapture);
 }
 
