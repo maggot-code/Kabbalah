@@ -1,6 +1,28 @@
-.vscode
-node_modules
+# .gitignore
+
 .DS_Store
+node_modules
 dist
 dist-ssr
+package-lock.json
+lib
+
+# local env files
 *.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.git
+.idea
+.vscode
+.npmignore
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
