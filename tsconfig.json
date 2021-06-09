@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "target": "esnext",
         "module": "esnext",
         "moduleResolution": "node",
@@ -11,13 +12,28 @@
         "lib": [
             "esnext",
             "dom"
-        ]
+        ],
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@plugins/*": [
+                "./src/plugins/*"
+            ],
+            "@assets/*": [
+                "./src/assets/*"
+            ],
+            "@components/*": [
+                "./src/components/*"
+            ]
+        }
     },
     "include": [
+        "vite.config.ts",
         "src/**/*.ts",
         "src/**/*.d.ts",
         "src/**/*.tsx",
-        "src/**/*.vue"
+        "src/**/*.vue",
     ],
     "exclude": [
         "node_modules"
