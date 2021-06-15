@@ -1,11 +1,37 @@
 {
-    "version": "0.0.0",
+    "name": "kabbalah",
+    "version": "1.0.4",
+    "main": "./dist/Kabbalah.umb.js",
+    "module": "./dist/Kabbalah.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/Kabbalah.es.js",
+            "require": "./dist/Kabbalah.umd.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "dev": "vite",
         "build": "npm run tsc && vite build",
         "serve": "vite preview",
         "tsc": "vue-tsc --noEmit"
     },
+    "description": "kabbalah",
+    "author": "hanserena",
+    "license": "MIT",
+    "keywords": [
+        "kabbalah"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maggot-code/Kabbalah.git"
+    },
+    "bugs": {
+        "url": "https://github.com/maggot-code/Kabbalah/issues"
+    },
+    "homepage": "https://github.com/maggot-code/Kabbalah#readme",
     "peerDependencies": {
         "vue": "^3.1.1",
         "element-plus": "^1.0.2-beta.46"

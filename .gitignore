@@ -5,7 +5,6 @@ node_modules
 dist
 dist-ssr
 package-lock.json
-lib
 
 # local env files
 *.local

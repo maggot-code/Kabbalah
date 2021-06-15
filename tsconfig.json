@@ -14,6 +14,9 @@
             "dom"
         ],
         "paths": {
+            "@pkg/*": [
+                "./packages/*"
+            ],
             "@/*": [
                 "./src/*"
             ],
@@ -34,8 +37,13 @@
         "src/**/*.d.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
+        "packages/**/*.ts",
+        "packages/**/*.d.ts",
+        "packages/**/*.tsx",
+        "packages/**/*.vue",
+        "lib/**/*.ts"
     ],
-    "exclude": [
-        "node_modules"
-    ]
+    // "exclude": [
+    //     "node_modules"
+    // ]
 }

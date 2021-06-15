@@ -1,10 +1,12 @@
 /*
  * @Author: maggot-code
- * @Date: 2021-06-08 17:57:04
+ * @Date: 2021-06-09 13:21:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-06-08 18:11:45
+ * @LastEditTime: 2021-06-09 13:57:05
  * @Description: file content
  */
+import type { App } from 'vue';
+
 import 'element-plus/packages/theme-chalk/src/base.scss';
 
 import {
@@ -12,7 +14,7 @@ import {
     ElButtonGroup,
 } from 'element-plus';
 
-const ElementInstall = (components: any, instructions: any) => (app: any) => {
+const ElementInstall = (components: any, instructions: any) => (app: App) => {
     components.forEach((component: any) => app.component(component.name, component));
 
     instructions.forEach((instruction: any) => app.use(instruction));

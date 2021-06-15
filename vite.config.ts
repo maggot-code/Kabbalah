@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-06-08 14:57:26
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-06-09 09:58:24
+ * @LastEditTime: 2021-06-15 15:09:09
  * @Description: file content
  */
 import { defineConfig } from 'vite';
@@ -32,6 +32,10 @@ const pluginsMuster = [
 
 const folderAlias = [
     {
+        find: "@pkg",
+        replacement: pathResolve('packages')
+    },
+    {
         find: '@',
         replacement: pathResolve('src')
     },
@@ -55,7 +59,7 @@ const serverProxy = {
         changeOrigin: true,
         ws: false,
         secure: false,
-        rewrite: (path: string) => path.replace(/^\/fallback/, '')
+        rewrite: (path: string) => path.replace(/^\/api\/v1/, '')
     }
 }
 
@@ -89,11 +93,7 @@ const buildOptions = {
             drop_debugger: true,
         },
     },
-    rollupOptions: {
-        output: {
-            manualChunks: {},
-        },
-    },
+    rollupOptions: {},
 }
 
 // https://vitejs.dev/config/
@@ -101,7 +101,7 @@ export default defineConfig({
     plugins: pluginsMuster,
     cacheDir: 'node_modules/.vite',
     resolve: {
-        extensions: ['.api.ts', '.conf.ts', '.ts', '.js'],
+        extensions: ['.api.ts', '.conf.ts', 'index.ts', '.ts', '.js'],
         alias: folderAlias
     },
     logLevel: "info",

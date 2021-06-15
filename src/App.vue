@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2021-06-08 14:57:26
  * @LastEditors: maggot-code
- * @LastEditTime: 2021-06-08 14:59:13
+ * @LastEditTime: 2021-06-09 13:20:40
  * @Description: file content
 -->
 <template>
@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorld from "@components/HelloWorld.vue";
 
 export default defineComponent({
     name: "App",
